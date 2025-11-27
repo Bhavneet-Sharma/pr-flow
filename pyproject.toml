@@ -20,5 +20,5 @@ run_flow = "pr_flow.main:main"
 plot_flow = "pr_flow.main:plot"
 
 [build-system]
-requires = ["poetry-core", "setuptools]
+requires = ["poetry-core", "setuptools"]
 build-backend = "poetry.core.masonry.api"
