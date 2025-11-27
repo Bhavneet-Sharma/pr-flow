@@ -2,19 +2,17 @@
 name = "pr_flow"
 version = "0.1.0"
 description = "pr-flow using crewAI"
-authors = ["Your Name <you@example.com>"]
+authors = [
+    { name = "Bhavneet Sharma", email = "you@example.com" },
+]
 
-[tool.poetry]
-name = "pr_flow"
-version = "0.1.0"
-description = "pr-flow using crewAI"
-authors = ["Your Name <you@example.com>"]
+requires-python = ">=3.10,<3.14"
 
-[tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-crewai = { extras = ["tools"], version = "0.74.2" }
-asyncio = "*"
-pygithub = "^2.4.0"
+dependencies = [
+    "crewai[tools]==0.74.2",
+    "asyncio",
+    "pygithub>=2.4.0,<3.0.0"
+]
 
 [tool.poetry.scripts]
 pr_flow = "pr_flow.main:main"
