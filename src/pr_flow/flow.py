@@ -84,7 +84,7 @@ class PRFlow(Flow[AgentState]):
         print(len(self.state.code_files))
         for file in self.state.code_files:
                 new_crew = code_crew.copy()
-                review_result = new_crew.kickoff(inputs={'diff': file['patch']})
+                review_result = new_crew.kickoff_async(inputs={'diff': file['patch']})
                 print('review done for ', file['filename'])
                 updated_file = {**file, 'review': str(review_result.raw)}
                 updated_code_files.append(updated_file)
@@ -102,7 +102,7 @@ class PRFlow(Flow[AgentState]):
         updated_doc_files = []
         for file in self.state.doc_files:
                 new_crew = doc_crew.copy()
-                review_result = new_crew.kickoff(inputs={'diff': file['patch']})
+                review_result = new_crew.kickoff_async(inputs={'diff': file['patch']})
                 print('review done for ', file['filename'])
                 updated_file = {**file, 'review': str(review_result.raw)}
                 updated_doc_files.append(updated_file)
@@ -158,7 +158,7 @@ async def run_flow():
     Run the flow.
     """
     pr_flow = PRFlow()
-    await pr_flow.kickoff()
+    await pr_flow.kickoff_async()
 
 async def plot_flow():
     """
